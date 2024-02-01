@@ -137,48 +137,95 @@
 
 
 /** LEETCODE #13 :: Roman to Integer :: SOLVED start **/
-const roman = ["I", "V", "X", "L", "C", "D", "M"];
-const nums = [1, 5, 10, 50, 100, 500, 1000];
+// const roman = ["I", "V", "X", "L", "C", "D", "M"];
+// const nums = [1, 5, 10, 50, 100, 500, 1000];
 
-var romanToInt = function (s) {
-    let arr = s.split("");
-    const resultNums = [];
-    let newNum = 0;
+// var romanToInt = function (s) {
+//     let arr = s.split("");
+//     const resultNums = [];
+//     let newNum = 0;
 
-    for (let i = 0; i < arr.length; i++) {
-        let position = roman.indexOf(arr[i]);
+//     for (let i = 0; i < arr.length; i++) {
+//         let position = roman.indexOf(arr[i]);
 
-        if (position === -1) alert("Wrong ROMAN number");
+//         if (position === -1) alert("Wrong ROMAN number");
 
-        resultNums.push(nums[position]);
-    }
+//         resultNums.push(nums[position]);
+//     }
 
-    for (let j = 0; j < resultNums.length; j++) {
-        if (resultNums[j] > resultNums[j - 1]) {
-            newNum = newNum - 2 * resultNums[j - 1];
-        }
+//     for (let j = 0; j < resultNums.length; j++) {
+//         if (resultNums[j] > resultNums[j - 1]) {
+//             newNum = newNum - 2 * resultNums[j - 1];
+//         }
 
-        newNum += resultNums[j];
-    }
+//         newNum += resultNums[j];
+//     }
 
 
-    return newNum;
-};
+//     return newNum;
+// };
 
-let result = romanToInt("CMXLIY");
-console.log(result);
+// let result = romanToInt("CMXLIY");
+// console.log(result);
 /** LEETCODE #13 :: Roman to Integer :: SOLVED end **/
 
 
+/***************************************************************************************/
 
+/** LEETCODE #14 :: Longest Common Prefix **/
 
+// Write a function to find the longest common prefix string amongst an array of strings.
+// If there is no common prefix, return an empty string "".
 
+// Example 1:
+// Input: strs = ["flower","flow","flight"]
+// Output: "fl"
 
+// Example 2:
+// Input: strs = ["dog","racecar","car"]
+// Output: ""
+// Explanation: There is no common prefix among the input strings.
 
+/** LEETCODE #14 :: Longest Common Prefix :: SOLVED start **/
 
+const strs = ["flowers", "flowers", "flowers"];
 
+var longestCommonPrefix = function (strs) {
+    let prefix = "";
+    let check = "";
+    let arrCheck = [];
+    let arr = [];
 
+    const sortArr = strs.sort((a, b) => {
+        return a.length - b.length;
+    })
 
+    if (strs.length === 1) {
+        prefix = strs[0];
+    } else {
+        for (let i = 0; i < sortArr[0].length; i++) {
+            check = sortArr[0].substr(i, 1);
+            arrCheck.push(check);
+        }
+
+        for (let j = 0; j < arrCheck.length; j++) {
+            arr = sortArr.filter(str => str.substr(j, 1) === arrCheck[j]);
+
+            if (arr.length !== sortArr.length) return prefix;
+
+            prefix += arrCheck[j];
+        }
+
+        return prefix;
+    }
+
+    return prefix;
+};
+
+let result = longestCommonPrefix(strs);
+console.log(result);
+
+/** LEETCODE #14 :: Longest Common Prefix :: SOLVED end **/
 
 
 
