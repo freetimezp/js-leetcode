@@ -188,50 +188,139 @@
 
 /** LEETCODE #14 :: Longest Common Prefix :: SOLVED start **/
 
-const strs = ["flowers", "flowers", "flowers"];
+// const strs = ["flowers", "flowers", "flowers"];
 
-var longestCommonPrefix = function (strs) {
-    let prefix = "";
-    let check = "";
-    let arrCheck = [];
-    let arr = [];
+// var longestCommonPrefix = function (strs) {
+//     let prefix = "";
+//     let check = "";
+//     let arrCheck = [];
+//     let arr = [];
 
-    const sortArr = strs.sort((a, b) => {
-        return a.length - b.length;
-    })
+//     const sortArr = strs.sort((a, b) => {
+//         return a.length - b.length;
+//     })
 
-    if (strs.length === 1) {
-        prefix = strs[0];
-    } else {
-        for (let i = 0; i < sortArr[0].length; i++) {
-            check = sortArr[0].substr(i, 1);
-            arrCheck.push(check);
-        }
+//     if (strs.length === 1) {
+//         prefix = strs[0];
+//     } else {
+//         for (let i = 0; i < sortArr[0].length; i++) {
+//             check = sortArr[0].substr(i, 1);
+//             arrCheck.push(check);
+//         }
 
-        for (let j = 0; j < arrCheck.length; j++) {
-            arr = sortArr.filter(str => str.substr(j, 1) === arrCheck[j]);
+//         for (let j = 0; j < arrCheck.length; j++) {
+//             arr = sortArr.filter(str => str.substr(j, 1) === arrCheck[j]);
 
-            if (arr.length !== sortArr.length) return prefix;
+//             if (arr.length !== sortArr.length) return prefix;
 
-            prefix += arrCheck[j];
-        }
+//             prefix += arrCheck[j];
+//         }
 
-        return prefix;
-    }
+//         return prefix;
+//     }
 
-    return prefix;
-};
+//     return prefix;
+// };
 
-let result = longestCommonPrefix(strs);
-console.log(result);
+// let result = longestCommonPrefix(strs);
+// console.log(result);
 
 /** LEETCODE #14 :: Longest Common Prefix :: SOLVED end **/
 
 
+/***************************************************************************************/
 
 
+/** LEETCODE #20 :: Valid Parentheses **/
+
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// An input string is valid if:
+
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+
+// Example 1:
+// Input: s = "()"
+// Output: true
+
+// Example 2:
+// Input: s = "()[]{}"
+// Output: true
+
+// Example 3:
+// Input: s = "(]"
+// Output: false
 
 
+/** LEETCODE #20 :: Valid Parentheses :: SOLVED start **/
+
+//let = "(){}[]";
+//let s = "(";
+//let s = "()()";
+let s = "({[([{}])]})";
+
+var isValidOne = function (s) {
+    let strCheck = "() {} []";
+    const arr = [];
+    let index = 0;
+
+    if (s.length <= 1 || (s.length + 2) % 2 == 1) {
+        return false;
+    }
+
+    while (index < s.length) {
+        arr.push(s[index]);
+        index++;
+
+        let start = arr[arr.length - 2];
+        let end = arr[arr.length - 1];
+        let startEnd = start + end;
+
+        console.log(arr);
+
+        if (strCheck.includes(startEnd)) {
+            arr.pop();
+            arr.pop();
+        }
+    }
+
+    if (arr.length === 0) return true;
+
+    return false;
+};
+
+var isValidTwo = function (s) {
+    const MAP = {
+        ")": "(",
+        "}": "{",
+        "]": "[",
+    };
+    const stack = [];
+
+    for (let i = 0; i < s.length; i++) {
+        console.log(s[i]);
+        if (s[i] in MAP) {
+            const item = stack.pop();
+            console.log(stack);
+
+            if (MAP[s[i]] !== item) {
+                return false;
+            }
+        } else {
+            stack.push(s[i]);
+            console.log(stack);
+        }
+    }
+
+    return stack.length === 0;
+};
+
+let result = isValidTwo(s);
+console.log(result);
+
+/** LEETCODE #20 :: Valid Parentheses :: SOLVED end **/
 
 
 
