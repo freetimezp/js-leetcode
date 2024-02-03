@@ -259,68 +259,132 @@
 //let = "(){}[]";
 //let s = "(";
 //let s = "()()";
-let s = "({[([{}])]})";
+// let s = "({[([{}])]})";
 
-var isValidOne = function (s) {
-    let strCheck = "() {} []";
-    const arr = [];
-    let index = 0;
+// var isValidOne = function (s) {
+//     let strCheck = "() {} []";
+//     const arr = [];
+//     let index = 0;
 
-    if (s.length <= 1 || (s.length + 2) % 2 == 1) {
-        return false;
-    }
+//     if (s.length <= 1 || (s.length + 2) % 2 == 1) {
+//         return false;
+//     }
 
-    while (index < s.length) {
-        arr.push(s[index]);
-        index++;
+//     while (index < s.length) {
+//         arr.push(s[index]);
+//         index++;
 
-        let start = arr[arr.length - 2];
-        let end = arr[arr.length - 1];
-        let startEnd = start + end;
+//         let start = arr[arr.length - 2];
+//         let end = arr[arr.length - 1];
+//         let startEnd = start + end;
 
-        console.log(arr);
+//         console.log(arr);
 
-        if (strCheck.includes(startEnd)) {
-            arr.pop();
-            arr.pop();
-        }
-    }
+//         if (strCheck.includes(startEnd)) {
+//             arr.pop();
+//             arr.pop();
+//         }
+//     }
 
-    if (arr.length === 0) return true;
+//     if (arr.length === 0) return true;
 
-    return false;
-};
+//     return false;
+// };
 
-var isValidTwo = function (s) {
-    const MAP = {
-        ")": "(",
-        "}": "{",
-        "]": "[",
-    };
-    const stack = [];
+// var isValidTwo = function (s) {
+//     const MAP = {
+//         ")": "(",
+//         "}": "{",
+//         "]": "[",
+//     };
+//     const stack = [];
 
-    for (let i = 0; i < s.length; i++) {
-        console.log(s[i]);
-        if (s[i] in MAP) {
-            const item = stack.pop();
-            console.log(stack);
+//     for (let i = 0; i < s.length; i++) {
+//         console.log(s[i]);
+//         if (s[i] in MAP) {
+//             const item = stack.pop();
+//             console.log(stack);
 
-            if (MAP[s[i]] !== item) {
-                return false;
-            }
-        } else {
-            stack.push(s[i]);
-            console.log(stack);
-        }
-    }
+//             if (MAP[s[i]] !== item) {
+//                 return false;
+//             }
+//         } else {
+//             stack.push(s[i]);
+//             console.log(stack);
+//         }
+//     }
 
-    return stack.length === 0;
-};
+//     return stack.length === 0;
+// };
 
-let result = isValidTwo(s);
-console.log(result);
+// let result = isValidTwo(s);
+// console.log(result);
 
 /** LEETCODE #20 :: Valid Parentheses :: SOLVED end **/
+
+
+/***************************************************************************************/
+
+/** LEETCODE #21 :: Merge Two Sorted Lists **/
+
+// ou are given the heads of two sorted linked lists list1 and list2.
+
+// Merge the two lists into one sorted list. The list should be made by splicing together the nodes of the first two lists.
+
+// Return the head of the merged linked list.
+
+
+// Example 1:
+// Input: list1 = [1,2,4], list2 = [1,3,4]
+// Output: [1,1,2,3,4,4]
+
+// Example 2:
+// Input: list1 = [], list2 = []
+// Output: []
+
+// Example 3:
+// Input: list1 = [], list2 = [0]
+// Output: [0]
+
+
+/** LEETCODE #21 :: Merge Two Sorted Lists :: SOLVED start **/
+
+//create ListNode object
+function linkedList(arr) {
+    return arr.reduceRight((next, value) => ({ value, next }), null);
+}
+
+const arr1 = [1, 2, 4];
+const arr2 = [1, 3, 4];
+
+const list1 = linkedList(arr1);
+const list2 = linkedList(arr2);
+
+var mergeTwoLists = function (list1, list2) {
+    if (!list1) return list2;
+    if (!list2) return list1;
+
+    if (list1.value <= list2.value) {
+        list1.next = mergeTwoLists(list1.next, list2);
+        return list1;
+    }
+
+    if (list1.value > list2.value) {
+        list2.next = mergeTwoLists(list2.next, list1);
+        return list2;
+    }
+};
+
+let result = mergeTwoLists(list1, list2)
+console.log(result);
+
+/** LEETCODE #21 :: Merge Two Sorted Lists :: SOLVED end **/
+
+
+
+
+
+
 
 
 
