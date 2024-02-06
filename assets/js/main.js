@@ -350,40 +350,110 @@
 /** LEETCODE #21 :: Merge Two Sorted Lists :: SOLVED start **/
 
 //create ListNode object
-function linkedList(arr) {
-    return arr.reduceRight((next, value) => ({ value, next }), null);
-}
+// function linkedList(arr) {
+//     return arr.reduceRight((next, value) => ({ value, next }), null);
+// }
 
-const arr1 = [1, 2, 4];
-const arr2 = [1, 3, 4];
+// const arr1 = [1, 2, 4];
+// const arr2 = [1, 3, 4];
 
-const list1 = linkedList(arr1);
-const list2 = linkedList(arr2);
+// const list1 = linkedList(arr1);
+// const list2 = linkedList(arr2);
 
-var mergeTwoLists = function (list1, list2) {
-    if (!list1) return list2;
-    if (!list2) return list1;
+// var mergeTwoLists = function (list1, list2) {
+//     if (!list1) return list2;
+//     if (!list2) return list1;
 
-    if (list1.value <= list2.value) {
-        list1.next = mergeTwoLists(list1.next, list2);
-        return list1;
-    }
+//     if (list1.value <= list2.value) {
+//         list1.next = mergeTwoLists(list1.next, list2);
+//         return list1;
+//     }
 
-    if (list1.value > list2.value) {
-        list2.next = mergeTwoLists(list2.next, list1);
-        return list2;
-    }
-};
+//     if (list1.value > list2.value) {
+//         list2.next = mergeTwoLists(list2.next, list1);
+//         return list2;
+//     }
+// };
 
-let result = mergeTwoLists(list1, list2)
-console.log(result);
+// let result = mergeTwoLists(list1, list2)
+// console.log(result);
 
 /** LEETCODE #21 :: Merge Two Sorted Lists :: SOLVED end **/
 
 
+/***************************************************************************************/
+
+/** LEETCODE #26 :: Remove Duplicates from Sorted Array **/
+
+// Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+
+// Consider the number of unique elements of nums to be k, to get accepted, you need to do the following things:
+
+// Change the array nums such that the first k elements of nums contain the unique elements in the order they were present in nums initially. The remaining elements of nums are not important as well as the size of nums.
+// Return k.
+
+// Custom Judge:
+// The judge will test your solution with the following code:
+
+// int[] nums = [...]; // Input array
+// int[] expectedNums = [...]; // The expected answer with correct length
+
+// int k = removeDuplicates(nums); // Calls your implementation
+
+// assert k == expectedNums.length;
+// for (int i = 0; i < k; i++) {
+//     assert nums[i] == expectedNums[i];
+// }
+// If all assertions pass, then your solution will be accepted.
 
 
+// Example 1:
+// Input: nums = [1,1,2]
+// Output: 2, nums = [1,2,_]
+// Explanation: Your function should return k = 2, with the first two elements of nums being 1 and 2 respectively.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
 
+// Example 2:
+// Input: nums = [0,0,1,1,1,2,2,3,3,4]
+// Output: 5, nums = [0,1,2,3,4,_,_,_,_,_]
+// Explanation: Your function should return k = 5, with the first five elements of nums being 0, 1, 2, 3, and 4 respectively.
+// It does not matter what you leave beyond the returned k (hence they are underscores).
+
+
+/** LEETCODE #26 :: Remove Duplicates from Sorted Array :: SOLVED start **/
+const nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4];
+//const nums = [1, 1, 2];
+
+// var removeDuplicates = function (nums) {
+//     if (!nums || nums.length === 0) return;
+//     let k = 1;
+
+//     for (let i = 0; i < nums.length; i++) {
+//         if (nums[i] !== nums[i + 1]) {
+//             nums[k] = nums[i + 1];
+//             k++;
+//         }
+//     }
+
+//     return k;
+// };
+
+var removeDuplicates = function (nums) {
+    if (!nums || nums.length === 0) return;
+
+    for (let i = nums.length - 1; i >= 0; i--) {
+        if (nums[i] === nums[i - 1]) {
+            nums.splice(i, 1);
+        }
+    }
+
+    return nums;
+};
+
+let result = removeDuplicates(nums);
+console.log(result);
+
+/** LEETCODE #26 :: Remove Duplicates from Sorted Array :: SOLVED end **/
 
 
 
