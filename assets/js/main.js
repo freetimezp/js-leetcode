@@ -505,24 +505,81 @@
 
 /** LEETCODE #27 :: Remove Element :: SOLVED start **/
 
-const nums = [4, 4, 0, 1, 0, 2];
-const val = 0;
+// const nums = [4, 4, 0, 1, 0, 2];
+// const val = 0;
 
-var removeElement = function (nums, val) {
-    if (!nums || nums.length === 0) return;
+// var removeElement = function (nums, val) {
+//     if (!nums || nums.length === 0) return;
 
-    for (let i = nums.length - 1; i >= 0; i--) {
-        if (nums[i] === val) {
-            //remove item by index (position) and set 1 (how many items for remove)
-            nums.splice(i, 1);
-        }
-    }
+//     for (let i = nums.length - 1; i >= 0; i--) {
+//         if (nums[i] === val) {
+//             //remove item by index (position) and set 1 (how many items for remove)
+//             nums.splice(i, 1);
+//         }
+//     }
 
-    return nums.length;
+//     return nums.length;
+// };
+
+// let result = removeElement(nums, val);
+// console.log(result);
+/** LEETCODE #27 :: Remove Element :: SOLVED end **/
+
+
+/***************************************************************************************/
+
+/** LEETCODE #28 :: Find the Index of the First Occurrence in a String **/
+
+// Given two strings needle and haystack, return the index of the first occurrence
+// of needle in haystack, or -1 if needle is not part of haystack.
+
+
+// Example 1:
+// Input: haystack = "sadbutsad", needle = "sad"
+// Output: 0
+// Explanation: "sad" occurs at index 0 and 6.
+// The first occurrence is at index 0, so we return 0.
+
+// Example 2:
+// Input: haystack = "leetcode", needle = "leeto"
+// Output: -1
+// Explanation: "leeto" did not occur in "leetcode", so we return -1.
+
+
+/** LEETCODE #28 :: Find the Index of the First Occurrence in a String :: SOLVED start **/
+let haystack = "sadbutsad asdasdas";
+let needle = "asd";
+
+var strStr = function (haystack, needle) {
+    if (!haystack || !needle) return;
+
+    let str = haystack.indexOf(needle);
+
+    return str;
 };
 
-let result = removeElement(nums, val);
+let result = strStr(haystack, needle);
 console.log(result);
-/** LEETCODE #27 :: Remove Element :: SOLVED end **/
+/** LEETCODE #28 :: Find the Index of the First Occurrence in a String :: SOLVED end **/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
