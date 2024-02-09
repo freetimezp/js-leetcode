@@ -547,22 +547,79 @@
 
 
 /** LEETCODE #28 :: Find the Index of the First Occurrence in a String :: SOLVED start **/
-let haystack = "sadbutsad asdasdas";
-let needle = "asd";
+// let haystack = "sadbutsad asdasdas";
+// let needle = "asd";
 
-var strStr = function (haystack, needle) {
-    if (!haystack || !needle) return;
+// var strStr = function (haystack, needle) {
+//     if (!haystack || !needle) return;
 
-    let str = haystack.indexOf(needle);
+//     let str = haystack.indexOf(needle);
 
-    return str;
-};
+//     return str;
+// };
 
-let result = strStr(haystack, needle);
-console.log(result);
+// let result = strStr(haystack, needle);
+// console.log(result);
 /** LEETCODE #28 :: Find the Index of the First Occurrence in a String :: SOLVED end **/
 
 
+/***************************************************************************************/
+
+
+/** LEETCODE #35 :: Search Insert Position **/
+// Given a sorted array of distinct integers and a target value, return
+// the index if the target is found. If not, return the index where it
+// would be if it were inserted in order.
+
+// You must write an algorithm with O(log n) runtime complexity.
+
+
+// Example 1:
+// Input: nums = [1,3,5,6], target = 5
+// Output: 2
+
+// Example 2:
+// Input: nums = [1,3,5,6], target = 2
+// Output: 1
+
+// Example 3:
+// Input: nums = [1,3,5,6], target = 7
+// Output: 4
+
+/** LEETCODE #35 :: Search Insert Position :: SOLVED start **/
+
+const nums = [1, 3, 5, 6];
+let target = 4;
+
+var searchInsert = function (nums, target) {
+
+    let i = 0;
+    let pos = 0;
+
+    if (nums[nums.length - 1] < target) {
+        return nums.length;
+    }
+
+    while (i < nums.length) {
+        if (nums[i] === target) return i;
+
+        if (nums[i] < target) {
+            pos = i;
+        }
+
+        if (nums[i] > target) {
+            return i;
+        }
+
+        i++;
+    }
+
+    return pos;
+};
+let result = searchInsert(nums, target);
+console.log(result);
+
+/** LEETCODE #35 :: Search Insert Position :: SOLVED end **/
 
 
 
