@@ -588,49 +588,82 @@
 
 /** LEETCODE #35 :: Search Insert Position :: SOLVED start **/
 
-const nums = [1, 3, 5, 6];
-let target = 4;
+// const nums = [1, 3, 5, 6];
+// let target = 4;
 
-var searchInsert = function (nums, target) {
+// var searchInsert = function (nums, target) {
 
-    let i = 0;
-    let pos = 0;
+//     let i = 0;
+//     let pos = 0;
 
-    if (nums[nums.length - 1] < target) {
-        return nums.length;
-    }
+//     if (nums[nums.length - 1] < target) {
+//         return nums.length;
+//     }
 
-    while (i < nums.length) {
-        if (nums[i] === target) return i;
+//     while (i < nums.length) {
+//         if (nums[i] === target) return i;
 
-        if (nums[i] < target) {
-            pos = i;
-        }
+//         if (nums[i] < target) {
+//             pos = i;
+//         }
 
-        if (nums[i] > target) {
-            return i;
-        }
+//         if (nums[i] > target) {
+//             return i;
+//         }
 
-        i++;
-    }
+//         i++;
+//     }
 
-    return pos;
-};
-let result = searchInsert(nums, target);
-console.log(result);
+//     return pos;
+// };
+// let result = searchInsert(nums, target);
+// console.log(result);
 
 /** LEETCODE #35 :: Search Insert Position :: SOLVED end **/
 
 
+/***************************************************************************************/
+
+
+/** LEETCODE #58 :: Length of Last Word **/
+
+// Given a string s consisting of words and spaces, return the length 
+// of the last word in the string.
+
+// A word is a maximal substring consisting of non-space characters only.
+
+
+// Example 1:
+// Input: s = "Hello World"
+// Output: 5
+// Explanation: The last word is "World" with length 5.
+
+// Example 2:
+// Input: s = "   fly me   to   the moon  "
+// Output: 4
+// Explanation: The last word is "moon" with length 4.
+
+// Example 3:
+// Input: s = "luffy is still joyboy"
+// Output: 6
+// Explanation: The last word is "joyboy" with length 6.
+
+
+/** LEETCODE #58 :: Length of Last Word :: SOLVED start **/
+let s = "   fly me   to   the moon  ";
+
+var lengthOfLastWord = function (s) {
+    let str = s.split(" ");
+    let newArr = str.filter(el => el !== "");
 
 
 
+    return newArr[newArr.length - 1].length;
+};
+let result = lengthOfLastWord(s);
+console.log(result);
 
-
-
-
-
-
+/** LEETCODE #58 :: Length of Last Word :: SOLVED end **/
 
 
 
