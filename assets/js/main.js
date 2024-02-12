@@ -627,7 +627,7 @@
 
 /** LEETCODE #58 :: Length of Last Word **/
 
-// Given a string s consisting of words and spaces, return the length 
+// Given a string s consisting of words and spaces, return the length
 // of the last word in the string.
 
 // A word is a maximal substring consisting of non-space characters only.
@@ -669,9 +669,9 @@
 
 /** LEETCODE #66 :: Plus One **/
 
-// You are given a large integer represented as an integer array digits, 
-// where each digits[i] is the ith digit of the integer. The digits are ordered 
-// from most significant to least significant in left-to-right order. The large 
+// You are given a large integer represented as an integer array digits,
+// where each digits[i] is the ith digit of the integer. The digits are ordered
+// from most significant to least significant in left-to-right order. The large
 // integer does not contain any leading 0's.
 
 // Increment the large integer by one and return the resulting array of digits.
@@ -701,35 +701,68 @@
 /** LEETCODE #66 :: Plus One :: SOLVED start **/
 
 //const digits = [4, 3, 2, 1];
-const digits = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 9, 9];
+// const digits = [6, 1, 4, 5, 3, 9, 0, 1, 9, 5, 1, 8, 6, 7, 0, 5, 5, 9, 9];
 
-var plusOne = function (digits) {
-    if (digits.length <= 0) return;
+// var plusOne = function (digits) {
+//     if (digits.length <= 0) return;
 
-    let strNum = digits.toString().replaceAll(",", "");
+//     let strNum = digits.toString().replaceAll(",", "");
 
-    strNum = BigInt(strNum);
-    strNum++;
+//     strNum = BigInt(strNum);
+//     strNum++;
 
-    let str = strNum.toString();
+//     let str = strNum.toString();
 
-    const arr = [];
-    for (let i = 0; i < str.length; i++) {
-        arr.push(str[i]);
-    }
+//     const arr = [];
+//     for (let i = 0; i < str.length; i++) {
+//         arr.push(str[i]);
+//     }
 
-    return arr;
-};
+//     return arr;
+// };
 
-let result = plusOne(digits);
-console.log(result);
+// let result = plusOne(digits);
+// console.log(result);
 
 /** LEETCODE #66 :: Plus One :: SOLVED end **/
 
 
+/***************************************************************************************/
+
+/** LEETCODE #67 :: Add Binary **/
+
+// Given two binary strings a and b, return their sum as a binary string.
+
+// Example 1:
+// Input: a = "11", b = "1"
+// Output: "100"
+
+// Example 2:
+// Input: a = "1010", b = "1011"
+// Output: "10101"
+
+/** LEETCODE #67 :: Add Binary :: SOLVED start **/
+
+let a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101";
+let b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011";
 
 
 
+var addBinary = function (a, b) {
+    if (!a || !b) return;
+
+    let num1 = BigInt('0b' + a);
+    let num2 = BigInt('0b' + b);
+
+
+    //let sum = parseInt(a, 2) + parseInt(b, 2);
+
+    return (num1 + num2).toString(2);
+};
+
+let result = addBinary(a, b);
+console.log(result);
+/** LEETCODE #67 :: Add Binary :: SOLVED end **/
 
 
 
