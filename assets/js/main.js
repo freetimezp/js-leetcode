@@ -743,32 +743,66 @@
 
 /** LEETCODE #67 :: Add Binary :: SOLVED start **/
 
-let a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101";
-let b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011";
+// let a = "10100000100100110110010000010101111011011001101110111111111101000000101111001110001111100001101";
+// let b = "110101001011101110001111100110001010100001101011101010000011011011001011101111001100000011011110011";
 
+// var addBinary = function (a, b) {
+//     if (!a || !b) return;
 
+//     let num1 = BigInt('0b' + a);
+//     let num2 = BigInt('0b' + b);
 
-var addBinary = function (a, b) {
-    if (!a || !b) return;
+//     return (num1 + num2).toString(2);
+// };
 
-    let num1 = BigInt('0b' + a);
-    let num2 = BigInt('0b' + b);
-
-
-    //let sum = parseInt(a, 2) + parseInt(b, 2);
-
-    return (num1 + num2).toString(2);
-};
-
-let result = addBinary(a, b);
-console.log(result);
+// let result = addBinary(a, b);
+// console.log(result);
 /** LEETCODE #67 :: Add Binary :: SOLVED end **/
 
 
+/***************************************************************************************/
+
+/** LEETCODE #69 :: Sqrt(x) **/
+
+// Given a non-negative integer x, return the square root of x rounded down to 
+// the nearest integer. The returned integer should be non-negative as well.
+
+// You must not use any built-in exponent function or operator.
+
+// For example, do not use pow(x, 0.5) in c++ or x ** 0.5 in python.
+
+// Example 1:
+// Input: x = 4
+// Output: 2
+// Explanation: The square root of 4 is 2, so we return 2.
+
+// Example 2:
+// Input: x = 8
+// Output: 2
+// Explanation: The square root of 8 is 2.82842..., 
+// and since we round it down to the nearest integer, 2 is returned.
 
 
+/** LEETCODE #69 :: Sqrt(x) :: SOLVED start **/
+let x = 4;
 
+var mySqrt = function (x) {
+    if (x < 0) return;
+    if (x === 0) return 0;
 
+    let i = 1;
+
+    while (i * i <= x) {
+        i++;
+    }
+
+    return i * i < x ? i : i - 1;
+};
+
+let result = mySqrt(x);
+console.log(result);
+
+/** LEETCODE #69 :: Sqrt(x) :: SOLVED end **/
 
 
 
