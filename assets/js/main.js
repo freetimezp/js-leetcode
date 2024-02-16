@@ -828,32 +828,94 @@
 // 3. 2 steps + 1 step
 
 /** LEETCODE #70 :: Climbing Stairs :: SOLVED start **/
-const n = 7;
+// const n = 7;
 
-var climbStairs = function (n) {
-    let arr = [];
-    arr[0] = 1;
-    arr[1] = 2;
+// var climbStairs = function (n) {
+//     let arr = [];
+//     arr[0] = 1;
+//     arr[1] = 2;
 
-    if (n === 0) return 0;
-    if (n === 1) return 1;
-    if (n === 2) return 2;
+//     if (n === 0) return 0;
+//     if (n === 1) return 1;
+//     if (n === 2) return 2;
 
-    for (let i = 3; i < n; i++) {
-        let sum = arr[0] + arr[1];
-        arr[0] = arr[1];
-        arr[1] = sum;
+//     for (let i = 3; i < n; i++) {
+//         let sum = arr[0] + arr[1];
+//         arr[0] = arr[1];
+//         arr[1] = sum;
 
-        //console.log(arr[1]);
-    }
+//         //console.log(arr[1]);
+//     }
 
-    return arr[0] + arr[1];
-};
+//     return arr[0] + arr[1];
+// };
 
-let result = climbStairs(n);
-console.log(result);
+// let result = climbStairs(n);
+// console.log(result);
 /** LEETCODE #70 :: Climbing Stairs :: SOLVED end **/
 
+/***************************************************************************************/
+
+/** LEETCODE #83 :: Remove Duplicates from Sorted List **/
+// Given the head of a sorted linked list, delete all duplicates such that
+// each element appears only once.Return the linked list sorted as well.
+
+// Example 1:
+// Input: head = [1,1,2]
+// Output: [1,2]
+
+// Example 2:
+// Input: head = [1,1,2,3,3]
+// Output: [1,2,3]
+
+/** LEETCODE #83 :: Remove Duplicates from Sorted List :: SOLVED start **/
+//create ListNode object
+function linkedList(arr) {
+    return arr.reduceRight((next, value) => ({ value, next }), null);
+}
+
+const arr = [1, 2, 3, 3, 5, 6, 7, 7];
+const head = linkedList(arr);
+
+var deleteDuplicates = function (head) {
+    let current = head;
+
+    while (current && current.next) {
+        if (current.value === current.next.value) {
+            current.next = current.next.next;
+        } else {
+            current = current.next;
+        }
+    }
+
+    // console.log(current.value);
+    // console.log(prev.value);
+
+    return head;
+};
+
+let result = deleteDuplicates(head);
+console.log(result);
+
+// let nums = [1, 2, 3, 4, 5, 5, 5, 6, 7, 8, 9];
+
+// var testFunc = (nums) => {
+//     let current = nums;
+//     let i = 0;
+
+//     while (i < current.length) {
+//         if (current[i] === 5) {
+//             current[i] = 'hello';
+//         }
+//         i++;
+//     }
+
+//     return nums;
+// }
+// let result1 = testFunc(nums);
+// console.log(result1);
+
+/** LEETCODE #83 :: Remove Duplicates from Sorted List :: SOLVED end **/
 
 
 
