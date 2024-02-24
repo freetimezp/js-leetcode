@@ -956,38 +956,78 @@
 
 /** LEETCODE #88 :: Merge Sorted Array :: SOLVED start **/
 
-const nums1 = [1, 2, 3, 0, 0, 0];
-let m = 3;
-const nums2 = [2, 5, 6];
-let n = 3;
+// const nums1 = [1, 2, 3, 0, 0, 0];
+// let m = 3;
+// const nums2 = [2, 5, 6];
+// let n = 3;
 
-var merge = function (nums1, m, nums2, n) {
-    let i = nums1.length;
-    while (i !== m) {
-        nums1.pop();
-        i--;
-    }
+// var merge = function (nums1, m, nums2, n) {
+//     let i = nums1.length;
+//     while (i !== m) {
+//         nums1.pop();
+//         i--;
+//     }
 
-    let x = nums2.length;
-    while (x !== n) {
-        nums2.pop();
-        x--;
-    }
+//     let x = nums2.length;
+//     while (x !== n) {
+//         nums2.pop();
+//         x--;
+//     }
 
-    for (let y = 0; y < n; y++) {
-        nums1.push(nums2[y]);
-    }
+//     for (let y = 0; y < n; y++) {
+//         nums1.push(nums2[y]);
+//     }
 
-    return nums1.sort((a, b) => { return a - b; });
-};
+//     return nums1.sort((a, b) => { return a - b; });
+// };
 
-let result = merge(nums1, m, nums2, n);
-console.log(result);
+// let result = merge(nums1, m, nums2, n);
+// console.log(result);
 
 /** LEETCODE #88 :: Merge Sorted Array :: SOLVED end **/
 
 
+/***************************************************************************************/
 
 
+/** LEETCODE #94 :: Binary Tree Inorder Traversal **/
+// Given the root of a binary tree, return the inorder traversal of its nodes' values.
 
+// Example 1:
+// Input: root = [1,null,2,3]
+// Output: [1,3,2]
 
+// Example 2:
+// Input: root = []
+// Output: []
+
+// Example 3:
+// Input: root = [1]
+// Output: [1]
+
+/** LEETCODE #94 :: Binary Tree Inorder Traversal :: SOLVED start **/
+function TreeNode(val, left, right) {
+    this.val = (val === undefined ? 0 : val)
+    this.left = (left === undefined ? null : left)
+    this.right = (right === undefined ? null : right)
+}
+
+var inorderTraversal = function (root) {
+    let res = [];
+
+    inorder(root);
+
+    function inorder(root) {
+        if (!root) return null;
+
+        inorder(root.left);
+        res.push(root.val);
+        inorder(root.right);
+    };
+
+    return res;
+}
+
+let result = inorderTraversal(binary);
+
+/** LEETCODE #94 :: Binary Tree Inorder Traversal :: SOLVED end **/
